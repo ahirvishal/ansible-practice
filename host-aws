@@ -1,0 +1,8 @@
+#invetory file
+
+[web-servers]
+18.207.199.121
+18.208.174.125
+
+[local]
+control ansible_connection=local
