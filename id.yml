@@ -1,0 +1,6 @@
+---
+ - hosts: all
+   tasks:
+        - command: id
+          register: rrs1
+        - debug: var=rrs1 

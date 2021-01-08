@@ -1,0 +1,11 @@
+---
+ - name: condi yaml
+   hosts: all
+   vars: 
+        v: httpd
+   tasks:
+      - name:
+        yum:
+            name: "{{ v }}"
+            state: latest
+        when: v is not defined

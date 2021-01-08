@@ -1,0 +1,27 @@
+---
+ - name: variable 1 yaml
+   hosts: web
+   tasks:
+      - name: installing apache
+        yum:
+            name: httpd 
+            state: latest
+        become: yes
+      - name: start httpd
+        service:
+                name: httpd
+                state: restarted
+        become: yes
+ - name: second part
+   hosts: db
+   tasks: 
+     - name: installling mysql
+       yum:
+            name: mysql
+            start: latest
+       become: yes
+     - name: start mysql
+       service: 
+                name: mysql
+                state: restarted
+       become: yes

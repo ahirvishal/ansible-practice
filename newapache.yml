@@ -1,0 +1,21 @@
+---
+ - name: apach
+   hosts: web
+   tasks:
+        - name: apache
+          yum:
+              name: httpd
+              state: latest
+          # become: yes
+        - name: changing port
+          lineinfile:
+                  path: /etc/httpd/conf/httpd.conf
+                  regexp: '^/Listen'
+                  insertafter: '#Listen '
+                  line: Listen 8080
+          # become: yes
+        - name: start
+          service:
+                name: httpd
+                state: restarted
+          # become: yes

@@ -1,0 +1,29 @@
+---
+ - name: setup m
+   hosts: all
+   gather_facts: yes
+   vars:
+        aansi:
+            - "{{ ansible_facts.architecture }}"
+            - "{{ ansible_facts.all_ipv4_addresses }}"
+   tasks:
+        - yum:
+             name: httpd
+             state: latest
+          register: install_result
+        - debug: var=install_result
+        - name: print hostname
+          debug:   
+              msg: "{{ item }}"
+          loop: 
+              - "{{ aansi }}"
+        - name: print hostname 2
+          debug:   
+              msg: 
+                  "{{ item.archi }}"
+          loop:
+            - archi: "{{ ansible_facts.architecture }}"
+        - debug:   
+              msg: "{{ item.ippv }}"
+          loop:
+              - ippv: "{{ ansible_facts.all_ipv4_addresses }}"

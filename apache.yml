@@ -1,0 +1,32 @@
+--- 
+ - hosts: all
+# including task
+   tasks:
+      - include_tasks: task.yml 
+
+
+# importing task
+ #  tasks:
+  #        - import_tasks: task.yml
+
+
+
+# #simple importing
+#  - name: importing
+#    import_playbook: newapachewithj2.yml
+
+#  - name: another
+#    import_playbook: loops_condi.yml
+#  - hosts: all
+#    tasks:
+#         - yum:
+#               name: httpd
+#               state: latest
+#           notify:
+#               - start
+#    handlers: 
+#         - name: start
+#           service:
+#               name: httpd
+#               state: restarted
+#               enabled: yes

@@ -1,0 +1,17 @@
+---
+    - name: apach
+      hosts: all
+      # serial: 1
+      tasks:
+           - name: apache
+             yum:
+                 name: httpd
+                 state: latest
+           - name: template
+             template:
+                src: /home/vishal/ansible-instance/vishal.j2
+                dest: /var/www/html/index.html
+           - name: start
+             service:
+                name: httpd
+                state: restarted

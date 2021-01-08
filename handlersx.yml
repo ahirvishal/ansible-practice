@@ -1,0 +1,14 @@
+---
+ -  name: handlers
+    hosts: all
+    tasks:
+          - name: yum with httpd
+            yum:
+                name: httpd
+                state: latest
+            notify: restarting apache 
+    handlers:
+        - name: restarting apache
+          service:
+              name: httpd
+              state: restarted

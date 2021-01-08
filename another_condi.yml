@@ -1,0 +1,8 @@
+---
+ - name: condi yaml
+   hosts: all
+   tasks:
+      - yum: 
+            name: httpd
+            state: latest
+        when: ansible_architecture == "x86_64" and ansible_bios_version == "4.2.amazon"
